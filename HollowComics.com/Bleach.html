@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOLLOW - Bleach</title>
+    <style>
+        @font-face {
+            font-family: 'OldSansBlack';
+            src: url('font/OldSansBlack.ttf') format('truetype');
+        }
+        body {
+            font-family: 'OldSansBlack', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            padding: 1.5rem;
+        }
+        .left-nav, .right-nav {
+            display: flex;
+            gap: 50rem;
+        }
+        .center-title {
+            text-align: center;
+            flex-grow: 1;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #000;
+            color: #fff;
+            padding: 1rem 2rem;
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            height: 10vh;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        .image-container {
+            position: relative;
+            width: auto;
+            height: auto;
+        }
+        .image-container img {
+            width: auto; /* La largeur est ajustée automatiquement */
+            height: 80vh; /* La hauteur est fixée à 80% de la hauteur de la fenêtre */
+            object-fit: contain; /* Maintient les proportions sans découper l'image */
+            max-width: 100%; /* Empêche l'image de dépasser la largeur de son conteneur */
+        }
+        .button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50%;
+            height: 100%;
+            
+            color: transparent;
+            font-size: 2rem;
+            text-align: center;
+            line-height: 400px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .button.left {
+            left: 0;
+        }
+        .button.right {
+            right: 0;
+        }
+.container {
+    display: flex; /* je sais pas vraiment */
+    justify-content: center; /* Centre horizontalement */
+}
+
+
+h1 {
+    text-align: center;
+}
+
+    </style>
+</head>
+
+<body>
+    
+    <header>
+        <div class="right-nav">
+            
+    <a href="https://ko-fi.com/hollowcomics" target="_blank" rel="noopener">
+        <img src="Header image/ko-fi.png" alt="ko-fi" style="width: auto; height: 7.5vh; padding-left: 20vh; cursor: pointer;">
+    </a>
+        </div>
+
+        <div class="center-title">
+
+  <a href="Hollow-home.html">
+    <img src="Header image/small logo.png" alt="small Logo" style="width: auto; height: 10vh;">
+  </a>
+
+</div>
+        <div class="left.nav">
+
+<label for="dark-mode-toggle">
+    <img src="Header image/darkmode.png" id="dark-mode-toggle" onclick="toggleDarkMode()" alt="Toggle Dark Mode" style="width: auto; height: 7.5vh; padding-right: 20vh; cursor: pointer;" >
+</label>
+
+</div>
+        </nav>
+    
+
+    </header>
+
+<h1>
+    Bleach
+</h1>
+
+
+
+
+<div class="container">
+
+    <div class="image-container">
+        <div class="button left" id="left-button" onclick="changeImage(1)">&#8249;</div>
+        <img id="main-image" src="Histoire/Test-manga/Chapter1/page1.png" alt="Image">
+        <div class="button right" id="right-button" onclick="changeImage(-1)">&#8250;</div>
+    </div>
+
+</div>
+
+
+
+
+    <script>
+        let currentImageIndex = 1; // 
+        const imagePath = "Histoire/Test-manga/Chapter1/page";
+        const imageExtension = ".png";
+        const maxImages = 56; // nombre d'image max
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+
+            
+            document.getElementById("right-button").style.display = currentImageIndex > 1 ? "flex" : "none";
+            document.getElementById("left-button").style.display = currentImageIndex < maxImages ? "flex" : "none";
+
+        
+            const imageElement = document.getElementById("main-image");
+            imageElement.src = `${imagePath}${currentImageIndex}${imageExtension}`;
+        }
+
+       
+        document.getElementById("right-button").style.display = "none"; 
+        document.getElementById("left-button").style.display = maxImages > 1 ? "flex" : "none";
+    </script>
+
+
+
+
+
+    <script>
+    // Charger la préférence de mode sombre
+    document.addEventListener("DOMContentLoaded", () => {
+        const isDarkMode = localStorage.getItem("darkMode") === "true";
+        document.body.classList.toggle("dark-mode", isDarkMode);
+    });
+</script>
+
+<script>
+        // Charger la préférence de mode sombre
+        document.addEventListener("DOMContentLoaded", () => {
+            const isDarkMode = localStorage.getItem("darkMode") === "true";
+            document.body.classList.toggle("dark-mode", isDarkMode);
+            document.getElementById("dark-mode-toggle").checked = isDarkMode;
+        });
+
+        // Basculer et sauvegarder le mode sombre
+        function toggleDarkMode() {
+            const isDarkMode = document.body.classList.toggle("dark-mode");
+            localStorage.setItem("darkMode", isDarkMode);
+        }
+    </script>
+
+
+    </body>
+</html>

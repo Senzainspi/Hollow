@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOLLOW - Accueil</title>
+    <style>
+        @font-face {
+            font-family: 'OldSansBlack';
+            src: url('OldSansBlack.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'OldSansBlack', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            padding: 1.5rem;
+        }
+        .left-nav, .right-nav {
+            display: flex;
+            gap: 50rem;
+
+        }
+        .center-title {
+            text-align: center;
+            flex-grow: 1;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #000;
+            color: #fff;
+            padding: 1rem 2rem;
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            height: 20vh;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+h1 {
+    padding: 1rem;
+}
+
+/* donne des regle au container */
+.container {
+    display: flex; /* je sais pas vraiment */
+    flex-wrap: wrap; /* permet au items de passer la ligne */
+    gap: 0.5rem; /* Espace entre les items */
+    justify-content: flex-start; /* met les items a droite */
+    padding: 1rem; /* met un espace avec les bord */
+}
+/* donne des regle au items */
+.item {
+    flex: 0 1 calc(12.5% - 0.5rem); /* change le nombre d'items par ligne */
+    text-align: center; /* Centre le texte sous les images */
+    box-sizing: border-box; /* les items ne depasse pas la page */
+}
+/* taille de l'image */
+.item img {
+    width: auto;
+    height: auto; 
+}
+/* taille et couleur du texte */
+.item p {
+    margin-top: 0.5rem;
+    font-size: 2rem;
+    color: black;
+}
+/* taille et couleur du texte en mode sombre*/
+.dark-mode .item p {
+    color: white;
+}
+/* centre le texte */
+.item .content {
+    text-align: center;
+    display: inline-block;
+
+}
+
+    </style>
+</head>
+
+<body>
+    
+    <header>
+        <div class="right-nav">
+            
+    <a href="https://ko-fi.com/hollowcomics" target="_blank" rel="noopener">
+        <img src="Header image/ko-fi.png" alt="ko-fi" style="width: auto; height: 10vh; padding-left: 5rem;">
+    </a>
+        </div>
+
+        <div class="center-title">
+
+  <a href="Hollow-home.html">
+    <img src="Header image/logo.png" alt="Logo" style="width: auto; height: 15vh;">
+  </a>
+
+</div>
+        <div class="left.nav">
+
+<label for="dark-mode-toggle">
+    <img src="Header image/darkmode.png" id="dark-mode-toggle" onclick="toggleDarkMode()" alt="Toggle Dark Mode" style="width: auto; height: 10vh; padding-right: 5rem; cursor: pointer;" >
+</label>
+
+</div>
+        </nav>
+    
+
+    </header>
+
+
+<h1> 
+    Histoire disponible 
+</h1>
+
+
+<div class="container">
+
+    <div class="item">
+        <a href="Ultimate Spider-man.html">
+            <div class="content">
+                <img src="HomeImage/Ultimate Spider-man-cover.png" alt="Story1" style="width: auto; height: 325px;">
+                <p>Ultimate <br> Spider-man</p>
+            </div>
+        </a>
+    </div>
+
+        <div class="item">
+        <a href="Bleach.html">
+            <div class="content">
+                <img src="HomeImage/Bleach-cover.png" alt="Story2" style="width: auto; height: 325px;">
+                <p>Bleach</p>
+            </div>
+        </a>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+<script>
+    // Charger la préférence de mode sombre
+    document.addEventListener("DOMContentLoaded", () => {
+        const isDarkMode = localStorage.getItem("darkMode") === "true";
+        document.body.classList.toggle("dark-mode", isDarkMode);
+    });
+</script>
+
+<script>
+        // Charger la préférence de mode sombre
+        document.addEventListener("DOMContentLoaded", () => {
+            const isDarkMode = localStorage.getItem("darkMode") === "true";
+            document.body.classList.toggle("dark-mode", isDarkMode);
+            document.getElementById("dark-mode-toggle").checked = isDarkMode;
+        });
+
+        // Basculer et sauvegarder le mode sombre
+        function toggleDarkMode() {
+            const isDarkMode = document.body.classList.toggle("dark-mode");
+            localStorage.setItem("darkMode", isDarkMode);
+
+        }
+    </script>
+
+
+</body>
+</html>
